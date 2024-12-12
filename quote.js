@@ -1,39 +1,31 @@
-const quoteElement = document.getElementById('quote');
-const authorElement = document.getElementById('author');
-const button = document.getElementById('generate-quote');
+const quoteElement = document.getElementById("quote");
+const authorElement = document.getElementById("author");
 
-// my API key
-const apiKey = "KEoyHa1iDw9SnPmgepYnwd27VlZikT2NC0hW9s067a2011a2";
-
-// Function to fetch a random quote
-function fetchQuote() {
-    fetch('https://quotes.rest/qod', {
-        headers: {
-            'Authorization': `Bearer ${apiKey}`
+async function fetchQuote() {
+    try {
+        const response = await fetch('http://localhost:3000/quote');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            const quote = data.contents.quotes[0].quote;
-            const author = data.contents.quotes[0].author;
+        const data = await response.json();
 
-            quoteElement.textContent = `"${quote}"`;
-            authorElement.textContent = `- ${author}`;
-        })
-        .catch(error => {
-            console.error('Error fetching quote:', error);
-            quoteElement.textContent = "Unable to fetch quote. Please try again.";
-            authorElement.textContent = "";
-        });
+        // Extract the quote and author from the response
+        const quote = data.contents.quotes[0].quote;
+        const author = data.contents.quotes[0].author;
+
+        // Update the HTML elements
+        quoteElement.textContent = `"${quote}"`;
+        authorElement.textContent = `- ${author}`;
+    } catch (error) {
+        console.error('Error fetching quote:', error);
+        quoteElement.textContent = "Unable to fetch quote. Please try again.";
+        authorElement.textContent = "";
+    }
 }
 
-// Add event listener for the button
-button.addEventListener('click', fetchQuote);
+// Call fetchQuote when the page loads
+document.addEventListener("DOMContentLoaded", fetchQuote);
 
-// Fetch a quote when the page loads
-fetchQuote();
+// Add event listener to the button
+const generateButton = document.getElementById("generate-quote");
+generateButton.addEventListener("click", fetchQuote);
