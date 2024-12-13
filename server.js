@@ -2,13 +2,15 @@ import express from 'express';
 import fetch from 'node-fetch';
 import cors from 'cors'; 
 
+dotenv.config(); // Load environment variables from .env file
+
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
-// API Key (make sure this is correct as per the new subscription plan)
-const apiKey = '4wE7zsJ1UqjY2dcwlPQTy117jFeATJCD0Ysfyynrf5dc976f';  // Update if necessary
 
+// Use the API key from the .env file
+const apiKey = process.env.API_KEY;
 // Fetch the quote from the API
 const fetchQuote = async () => {
     try {
