@@ -1,0 +1,26 @@
+{
+    "type": "module",
+    "name": "random-quote",
+    "version": "1.0.0",
+    "description": "",
+    "main": "quote.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/kendall3000/Random-Quote-Generator.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/kendall3000/Random-Quote-Generator/issues"
+    },
+    "homepage": "https://github.com/kendall3000/Random-Quote-Generator#readme",
+    "dependencies": {
+      "express": "^4.21.2",
+      "node-fetch": "^3.3.2"
+    }
+  }
