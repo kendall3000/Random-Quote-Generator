@@ -10,8 +10,8 @@ async function fetchQuote() {
         const data = await response.json();
 
         // Extract the quote and author from the response
-        const quote = data.contents.quotes[0].quote;
-        const author = data.contents.quotes[0].author;
+        const quote = data.quote;
+        const author = data.author;
 
         // Update the HTML elements
         quoteElement.textContent = `"${quote}"`;
