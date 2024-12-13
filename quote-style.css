@@ -1,10 +1,13 @@
+/* Default (Light Mode) Styles */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f4f4f9;
     color: #333;
     padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
 }
+
 #quote-box {
     max-width: 600px;
     margin: 100px auto;
@@ -13,25 +16,94 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 #quote {
     font-size: 1.5em;
     font-style: italic;
     margin-bottom: 10px;
 }
+
 #author {
     font-size: 1.2em;
     color: #555;
     margin-bottom: 20px;
 }
+
 #generate-quote {
-    background-color: #3498db;
+    background-color: #3498db; /* Purple accent */
     color: white;
     border: none;
     padding: 10px 20px;
     font-size: 1em;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
+
 #generate-quote:hover {
-    background-color: #2ecc71;
+    background-color: #2ecc71; /* Green accent */
+}
+
+/* Default (Light Mode) Cursor */
+body {
+    cursor: url('assets/images/sun.jpg'), auto; /* Light mode cursor icon */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #222222;
+    color: #ffffff;
+    cursor: url('assets/images/moon.webp'), auto;
+}
+
+body.dark-mode #quote-box {
+    background: #333333;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode #generate-quote {
+    background-color: #8a2be2; /* Lighter purple accent */
+}
+
+body.dark-mode #generate-quote:hover {
+    background-color: #9932cc; /* Darker purple hover effect */
+}
+
+/* Optional: Dark header/footer styles */
+body.dark-mode header, body.dark-mode footer {
+    background-color: #333333;
+}
+
+/* Style the theme toggle button */
+#theme-toggle {
+    width: 80px; 
+    height: 30px;
+    background-color: #3498db; /* Initial background (light mode) */
+    border-radius: 50px;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#theme-toggle:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 22px;
+    height: 22px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+}
+
+/* Dark Mode Button Styles */
+body.dark-mode #theme-toggle {
+    background-color: #8a2be2; /* Dark background (dark mode) */
+}
+
+body.dark-mode #theme-toggle:before {
+    left: 55px; /* Move the slider to the right */
 }
